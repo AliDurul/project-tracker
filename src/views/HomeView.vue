@@ -2,7 +2,11 @@
   <div class="home">
     <div v-if="projects.length">
       <div v-for="project in projects" :key="project.id">
-       <SingleProject @delete="hanldeDelete" :project="project"/>
+        <SingleProject
+          @delete="hanldeDelete"
+          @complete="handleComplete"
+          :project="project"
+        />
       </div>
     </div>
   </div>
@@ -10,7 +14,7 @@
 
 <script>
 // @ is an alias to /src
-import SingleProject from '@/components/SingleProject'
+import SingleProject from "@/components/SingleProject";
 
 export default {
   name: "HomeView",
@@ -30,9 +34,18 @@ export default {
   },
   methods: {
     hanldeDelete(id) {
-      console.log(id);
-      this.projects = this.projects.filter(project=>project.id !== id)
-    }
+      this.projects = this.projects.filter((project) => project.id !== id);
+    },
+    handleComplete(id) {
+      console.log(this.projects);
+
+     this.projects.map((project) => {
+        if (project.id === id) {
+          project.complete = !project.complete;
+        }
+      });
+      console.log(this.projects);
+    },
   },
 };
 </script>

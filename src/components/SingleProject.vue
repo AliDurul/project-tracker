@@ -30,19 +30,18 @@ export default {
   },
   methods: {
     delteProject() {
-      fetch(this.url, { method: "DELETE" }).then(() =>
-        this.$emit("delete", this.project.id)
-      );
+      fetch(this.url, { method: "DELETE" })
+        .then(() => this.$emit("delete", this.project.id))
+        .catch((err) => console.log(err.message));
     },
     completeProject() {
       fetch(this.url, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({complete: !this.project.complete}),
+        body: JSON.stringify({ complete: !this.project.complete }),
       })
-      .then(() =>
-        this.$emit("complete", this.project.id)
-      )
+        .then(() => this.$emit("complete", this.project.id))
+        .catch((err) => console.log(err.message));
     },
   },
 };
