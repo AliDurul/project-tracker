@@ -37,14 +37,11 @@ export default {
       this.projects = this.projects.filter((project) => project.id !== id);
     },
     handleComplete(id) {
-      console.log(this.projects);
-
      this.projects.map((project) => {
         if (project.id === id) {
           project.complete = !project.complete;
         }
       });
-      console.log(this.projects);
     },
   },
 };

@@ -1,15 +1,15 @@
 <template>
-  <div class="project">
+  <div class="project" :class="{complete: project.complete}">
     <div class="actions">
       <h3 @click="showDetail = !showDetail">{{ project.title }}</h3>
       <div class="icons">
-        <span @click="completeProject" class="material-symbols-outlined">
-          done
-        </span>
         <span @click="delteProject" class="material-symbols-outlined">
           delete
         </span>
         <span class="material-symbols-outlined"> edit </span>
+        <span @click="completeProject" class="material-symbols-outlined tick">
+          done
+        </span>
       </div>
     </div>
     <div v-if="showDetail" class="details">
@@ -76,5 +76,12 @@ h3 {
       color: #777;
     }
   }
+}
+.project.complete{
+  border-left: 5px solid #76dd78;
+}
+
+.project.complete .tick{
+    color: #76dd78;
 }
 </style>
