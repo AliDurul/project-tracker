@@ -34,7 +34,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style >
 form {
   background: #fff;
   padding: 20px;

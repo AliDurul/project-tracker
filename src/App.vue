@@ -1,12 +1,20 @@
 <template>
   <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/projects">Projects</router-link> |
-    <router-link to="/add">Add Project</router-link> |
-    <router-link to="/edit">Edit Project</router-link> |
+    <navbar-view/>
   </nav>
   <router-view/>
 </template>
+<script>
+import NavbarView from './components/NavbarView.vue';
+
+
+export default {
+  components: {
+    NavbarView
+},
+};
+</script>
+
 
 <style>
 body{

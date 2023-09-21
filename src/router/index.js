@@ -23,11 +23,7 @@ const routes = [
     name: 'AddProject',
     component: () => import( '../views/AddProjectView.vue')
   },
-  {
-    path: '/edit',
-    name: 'EditProject',
-    component: () => import( '../views/EditProjectView.vue')
-  },
+
 ]
 
 const router = createRouter({

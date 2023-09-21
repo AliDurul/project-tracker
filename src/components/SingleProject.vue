@@ -1,12 +1,14 @@
 <template>
-  <div class="project" :class="{complete: project.complete}">
+  <div class="project" :class="{ complete: project.complete }">
     <div class="actions">
       <h3 @click="showDetail = !showDetail">{{ project.title }}</h3>
       <div class="icons">
         <span @click="delteProject" class="material-symbols-outlined">
           delete
         </span>
-        <span class="material-symbols-outlined"> edit </span>
+        <router-link :to="{ name: 'EditProject', params: { id: project.id } }">
+          <span class="material-symbols-outlined"> edit </span>
+        </router-link>
         <span @click="completeProject" class="material-symbols-outlined tick">
           done
         </span>
@@ -19,6 +21,8 @@
 </template>
 
 <script>
+import { RouterLink } from "vue-router";
+
 export default {
   name: "SingleProject",
   props: ["project"],
@@ -44,6 +48,7 @@ export default {
         .catch((err) => console.log(err.message));
     },
   },
+  components: { RouterLink },
 };
 </script>
 
@@ -77,11 +82,11 @@ h3 {
     }
   }
 }
-.project.complete{
+.project.complete {
   border-left: 5px solid #76dd78;
 }
 
-.project.complete .tick{
-    color: #76dd78;
+.project.complete .tick {
+  color: #76dd78;
 }
 </style>
