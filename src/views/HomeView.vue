@@ -1,7 +1,8 @@
 <template>
   <div class="home">
+    <FilterNav @filterChange="current = $event" :current="current" />
     <div v-if="projects.length">
-      <div v-for="project in projects" :key="project.id">
+      <div v-for="project in filteredProjects" :key="project.id">
         <SingleProject
           @delete="hanldeDelete"
           @complete="handleComplete"
@@ -15,15 +16,18 @@
 <script>
 // @ is an alias to /src
 import SingleProject from "@/components/SingleProject";
+import FilterNav from "@/components/FilterNav";
 
 export default {
   name: "HomeView",
   components: {
     SingleProject,
+    FilterNav,
   },
   data() {
     return {
       projects: [],
+      current: "all",
     };
   },
   mounted() {
@@ -37,11 +41,20 @@ export default {
       this.projects = this.projects.filter((project) => project.id !== id);
     },
     handleComplete(id) {
-     this.projects.map((project) => {
+      this.projects.map((project) => {
         if (project.id === id) {
           project.complete = !project.complete;
         }
       });
+    },
+  },
+  computed: {
+    filteredProjects() {
+      if (this.current === "completed")
+        return this.projects.filter((project) => project.complete);
+      else if (this.current === "ongoing")
+        return this.projects.filter((project) => !project.complete);
+      else return this.projects;
     },
   },
 };
