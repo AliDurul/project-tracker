@@ -10,7 +10,7 @@
       "id": 2,
       "title": "Deneme 2",
       "details": "Lorem ipsum dolor sit amet consectetur a elit. Esse, non?",
-      "complete": false
+      "complete": true
     },
     {
       "id": 3,
@@ -22,7 +22,7 @@
       "id": 4,
       "title": "Deneme 4",
       "details": "Lorem ipsum dolor sit amet consectetur adipisicing e",
-      "complete": false
+      "complete": true
     }
   ]
 }

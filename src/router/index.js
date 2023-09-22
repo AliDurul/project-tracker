@@ -8,11 +8,6 @@ const routes = [
     component: HomeView
   },
   {
-    path: '/projects',
-    name: 'Projects',
-    component: () => import( '../views/ProjectsView.vue')
-  },
-  {
     path: '/projects/:id',
     name: 'EditProject',
     component: () => import( '../views/EditProjectView.vue'),
