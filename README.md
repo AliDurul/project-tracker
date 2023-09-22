@@ -3,10 +3,16 @@
 ## Project setup
 ```
 yarn install
+
+npm install -g json-server
+
 ```
+
 
 ### Compiles and hot-reloads for development
 ```
+json-server --watch ./data/db.json
+
 yarn serve
 ```
 
